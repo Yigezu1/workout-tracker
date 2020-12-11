@@ -48,6 +48,7 @@ function renderWorkoutSummary(summary) {
   const container = document.querySelector(".workout-stats");
 
   const workoutKeyMap = {
+
     date: "Date",
     totalDuration: "Total Workout Duration",
     numExercises: "Exercises Performed",
