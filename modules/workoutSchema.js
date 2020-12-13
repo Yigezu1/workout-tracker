@@ -3,7 +3,10 @@ const Schema = mongoose.Schema;
 
 const WorkoutSchema = new Schema({
   exercises: [],
-  date: Date,
+  date: {
+    type: Date,
+    default: new Date()
+  },
   completed: {
     type: Boolean,
     default: false,
