@@ -1,5 +1,5 @@
 require('../db/mongoose');
-const Workout = require('../modules/workoutSchema');
+const Workout = require('../models/workoutSchema');
 
 module.exports = function(app) {
   //get last workout
@@ -11,7 +11,7 @@ module.exports = function(app) {
   //Create a new Workout
   app.post('/api/workouts', (req, res) => {
     const data = req.body;
-    data.date = new Date().setDate(new Date().getDate());
+    data.day = new Date().setDate(new Date().getDate());
     const workout = new Workout(data);
     workout
       .save()
