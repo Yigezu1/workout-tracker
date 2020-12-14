@@ -10,9 +10,9 @@ module.exports = function(app) {
 
   //Create a new Workout
   app.post('/api/workouts', (req, res) => {
-    const data = req.body;
+    const data = req.body;    
     data.day = new Date().setDate(new Date().getDate());
-    const workout = new Workout(data);
+    const workout = new Workout(data);    
     workout
       .save()
       .then(() => {
@@ -27,7 +27,8 @@ module.exports = function(app) {
   app.put('/api/workouts/:id', async (req, res) => {
     try {
       const newWorkout = await Workout.findById(req.params.id);
-      newWorkout.exercises.push(req.body);
+      newWorkout.exercises.push(req.body); 
+      newWorkout.totalDuration = newWorkout.totalDuration + req.body.duration;    
       newWorkout
         .save()
         .then(() => {
