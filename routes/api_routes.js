@@ -11,12 +11,12 @@ module.exports = function(app) {
   //Create a new Workout
   app.post('/api/workouts', (req, res) => {
     const data = req.body;
-    data.date = new Date();
+    data.date = new Date().setDate(new Date().getDate());
     const workout = new Workout(data);
     workout
       .save()
       .then(() => {
-        res.send(workout);
+        res.json(workout);
       })
       .catch(error => {
         console.log(error);
@@ -31,7 +31,7 @@ module.exports = function(app) {
       newWorkout
         .save()
         .then(() => {
-          res.send(newWorkout);
+          res.json(newWorkout);
         })
         .catch(error => {
           console.log(error);
